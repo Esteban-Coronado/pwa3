@@ -54,6 +54,25 @@ git push -u origin main
 Publicar en GitHub Pages (opcional):
 
 - Ya está configurado para una ruta base (`/pwa3/`). Usa `gh-pages` o Actions para publicar la carpeta `dist/` en `gh-pages`.
+
+Recomendación para GitHub Pages (workflow incluido):
+
+- Este repo incluye un GitHub Actions workflow que construye y despliega `dist/` a GitHub Pages automáticamente cuando empujes a `main`.
+- Nota importante: para que las rutas funcionen sin cambiar `vite.config.js`, crea el repo con el nombre `pwa3` (entonces la URL será `https://<user>.github.io/pwa3/`). Si el repo tiene otro nombre, actualiza `vite.config.js` `base` a `'/<repo>/'` antes de hacer `git push`.
+
+Pasos rápidos para publicar via Actions:
+
+1. Crea el repo en GitHub (ejemplo con `gh`):
+```bash
+gh repo create <user>/pwa3 --public --source=. --remote=origin
+```
+2. Empuja:
+```bash
+git push -u origin main
+```
+3. GitHub Actions ejecutará el workflow y desplegará el sitio en GitHub Pages. Espera unos minutos y revisa `https://<user>.github.io/pwa3/`.
+
+Si prefieres usar `gh-pages` package en vez de Actions, dímelo y lo agrego.
 # CensoPet — PWA Censo de Mascotas
 
 Progressive Web App para el registro y visualización geolocalizada de mascotas censadas. Construida con **Vue 3**, **Pinia**, **Vite PWA** y **Google Maps JS API**, con soporte offline mediante **IndexedDB** y notificaciones push via **Web Push + VAPID**.
